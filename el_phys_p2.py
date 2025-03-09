@@ -84,5 +84,6 @@ k_s_i = e**(-delta*t_m_i) + 1
 
 print(round(u_p, 5))
 print(round(tg_phi_p, 5))
-print(round(t_m_u, 4))
+print(polar(1+0j), 4)
+
 # print(round(polar(tg_phi_p), 5))

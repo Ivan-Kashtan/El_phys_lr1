@@ -2,19 +2,20 @@
 from io import BytesIO
 
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 # from numpy._core._multiarray_umath import sin
 from scipy.integrate import solve_ivp
-from svglib.svglib import svg2rlg
-from matplotlib.pyplot import MultipleLocator
+# from svglib.svglib import svg2rlg
+# from matplotlib.pyplot import MultipleLocator
+from in_dat import r1, r2, l, c, e
 
 # Параметры схемы
 # E = 1
-e = 1
-r1 = 1000
-r2 = 100
-l = 1
-c = 1E-6  # C = 20 * 10^(-6) Ф
+# e = 1
+# r1 = 1000
+# r2 = 100
+# l = 1
+# c = 1E-6  # C = 20 * 10^(-6) Ф
 
 # Функция с правыми частями системы уравнений
 def fnc(t, y):
@@ -43,22 +44,25 @@ slv = solve_ivp(fnc, [0, tmax], [uc0, i0], method = 'BDF')
 t = slv.t
 u_c = slv.y[0, :]
 i = slv.y[1, :]
-# '''
+
+r'''
 # Строим графики решения
 f1 = plt.figure(1)
-plt.plot(t, u_c)
+plt.plot(t, u_c, 'k')
 # plt.grid()
 plt.title('Напряжение на емкости при $E = 1 В$')
 plt.xlabel('$t$, с')
 plt.ylabel('$u_C$, В')
 ax_u = plt.gca()  # Создание экземпляра осей для возможности его редактирования
 # ax.xaxis.set_major_locator(MultipleLocator(10))  # Основная цена деления оси Ox
-ax_u.xaxis.set_minor_locator(MultipleLocator(0.01))  # Дополнительная цена деления оси Ox (t)
-ax_u.yaxis.set_major_locator(MultipleLocator(0.05))  # Основная цена деления оси Oy
+# ax_u.xaxis.set_minor_locator(MultipleLocator(0.002))  # Дополнительная цена деления оси Ox (t)
+# ax_u.yaxis.set_major_locator(MultipleLocator(0.05))  # Основная цена деления оси Oy
 # ax.yaxis.set_minor_locator(MultipleLocator(1E-4))  # Дополнительная цена деления оси Oy (t)
 ax_u.grid()
-plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\const u.svg')
+plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\const u.png', dpi=600)
+'''
 
+r'''
 f2 = plt.figure(2)
 plt.plot(t, i, 'k')
 plt.grid()
@@ -71,9 +75,10 @@ plt.title('Ток в индуктивности при $E = 1 В$')
 # ax.yaxis.set_major_locator(MultipleLocator(100))  # Основная цена деления оси Oy
 ax_u.yaxis.set_minor_locator(MultipleLocator(0.02))  # Дополнительная цена деления оси Oy (t)
 ax_u.grid()
-plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\const i.svg')
+plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\const i.png', dpi=600)
 # plt.show()
-# '''
+'''
+
 '''
 imgdata = BytesIO()
 f1.savefig(imgdata, format='svg')

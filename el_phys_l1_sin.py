@@ -1,21 +1,22 @@
 # Расчёт переходного процесса в RLC-контуре
-from io import BytesIO
-
 import numpy as np
-import matplotlib.pyplot as plt
-# from numpy._core._multiarray_umath import sin
+# import matplotlib.pyplot as plt
+# from matplotlib.pyplot import MultipleLocator
+from numpy._core._multiarray_umath import sin
 from scipy.integrate import solve_ivp
-from svglib.svglib import svg2rlg
-from in_dat import *
+# from svglib.svglib import svg2rlg
+# from io import BytesIO
+
+from in_dat import r1, r2, l, c, e
 # from el_phys_l1_const import r1, r2, l, c, e
-from matplotlib.pyplot import MultipleLocator
+
 
 # Параметры схемы
-e = 1
-r1 = 1000
-r2 = 100
-l = 1
-c = 1E-6  # C = 20 * 10^(-6) Ф
+# e = 1
+# r1 = 1000
+# r2 = 100
+# l = 1
+# c = 1E-6  # C = 20 * 10^(-6) Ф
 
 # Функция с правыми частями системы уравнений
 def fnc1(t, y):
@@ -64,7 +65,7 @@ i2 = slv1.y[1, :]
 '''
 # '''
 # Строим графики решения
-# '''
+r'''
 f_u1 = plt.figure(1)
 plt.plot(t1, u_c1, 'k')
 plt.title('Напряжение на емкости при $e = 1\\cdot sin\\omega t$')
@@ -76,10 +77,10 @@ ax_u.xaxis.set_minor_locator(MultipleLocator(0.005))  # Дополнительн
 # ax.yaxis.set_major_locator(MultipleLocator(0.1))  # Основная цена деления оси Oy
 # ax.yaxis.set_minor_locator(MultipleLocator(0.02))  # Дополнительная цена деления оси Oy (t)
 ax_u.grid()
-plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin u.svg')
-# '''
+plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin u.png', dpi=600)
+'''
 
-# '''
+r'''
 f_i1 = plt.figure(2)
 plt.plot(t1, i1*10**3, 'k')
 # plt.grid()
@@ -92,16 +93,15 @@ ax_i.xaxis.set_minor_locator(MultipleLocator(0.005))  # Дополнительн
 # ax_i.yaxis.set_major_locator(MultipleLocator(100))  # Основная цена деления оси Oy
 # ax_i.yaxis.set_minor_locator(MultipleLocator(1E-4))  # Дополнительная цена деления оси Oy (t)
 ax_i.grid()
-plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin i.svg')
-# '''
+plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin i.png', dpi=600)
+'''
 '''
 f_u2 = plt.figure(1)
 plt.plot(t2, u_c2)
 plt.grid()
 plt.title('Напряжение на емкости при $\\phi = \\dfrac {\\pi} {2}$')
 plt.save()
-'''
-'''
+
 f_i2 = plt.figure(2)
 plt.plot(t2, i2)
 plt.grid()
