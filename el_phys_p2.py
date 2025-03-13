@@ -1,12 +1,18 @@
-from numpy import array, pi, round, atan
+from numpy import array, pi, round, atan, empty, inf
 from numpy._core._multiarray_umath import sqrt, cos, sin, e
 from in_dat import *
 
 # from cmath import rect, radians, polar
 
-def polar(x:complex):
+def p_d(x:complex):
     x_m = abs(x)
     phi = atan(x.imag / x.real) * pi / 180
+    # phi = atan(x.imag / x.real) * 180 / pi
+    return x_m, phi
+
+def p_r(x:complex):
+    x_m = abs(x)
+    phi = atan(x.imag / x.real)
     # phi = atan(x.imag / x.real) * 180 / pi
     return x_m, phi
 
@@ -33,18 +39,17 @@ def rect(x_m, phi):
 
     # return
 # E = (1, 1)
-e_a = array([1, 1+0j])
+e_a = array([1+0j, 1])
 # e_a = arra
 i0 = 0
 u0 = 0
-beta = 10**3
-delta = 1
-omega0 = sqrt(beta**2 - 1**2)
+beta = sqrt(1/(c*l))
+delta = (r2 + r1) / (2*c*r1*r2)
+omega0 = sqrt(beta**2 - delta**2)
 
 omega = 2 * pi * 50
 x_c = 1 / (1j * omega * c)
 x_l = 1j * omega * l
-
 
 # forced
 # z = 1000.108 + 1j*348.561
@@ -73,17 +78,24 @@ i_p = sqrt(u_c_f**2 / z_c**2 + i_l_f**2)
 # u_p_const = sqrt(u_c_const**2 + z_c**2 * i_l_const**2)
 # omega0 = 998.5
 # z = 1000
-tg_phi_p = -z_c*((i_l_f - i0) / (u_c_f - u0))
+tg_phi_p = empty(2, dtype='complex')
+
+# tg_phi_p[1] = -z_c*((i0 - i0) / (u0 - u0))
+tg_phi_p[1] = inf
+tg_phi_p[0] = -z_c*((i_l_f[0] - i0) / (u_c_f[0] - u0))
 # tg_phi_p = abs(-z * (i_l_f - i0) / (u_c_f - u0))
-t_m_u = (pi - atan(tg_phi_p)) / omega0
-t_m_i = (pi/2 - atan(tg_phi_p)) / omega0
+atg = atan(tg_phi_p)
+t_m_u = (pi - atg) / omega0
+t_m_i = (pi/2 - atg) / omega0
 # delta = 54.5
 
 k_s_u = e**(-delta*t_m_u) + 1
 k_s_i = e**(-delta*t_m_i) + 1
 
-print(round(u_p, 5))
-print(round(tg_phi_p, 5))
-print(polar(1+0j), 4)
+print(f'\u03b2 = {beta}')
+print(f'\u03b4 = {delta}')
+print(f'{z_c=}')
+print(round(p_d(atg), 5))
+# print(polar(1+0j), 4)
 
 # print(round(polar(tg_phi_p), 5))

@@ -1,12 +1,13 @@
 # Расчёт переходного процесса в RLC-контуре
 import numpy as np
-# import matplotlib.pyplot as plt
-# from matplotlib.pyplot import MultipleLocator
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import MultipleLocator
 from numpy._core._multiarray_umath import sin
 from scipy.integrate import solve_ivp
-# from svglib.svglib import svg2rlg
-# from io import BytesIO
 
+# from svglib.svglib import svg2rlg
+# # from io import BytesIO
+#
 from in_dat import r1, r2, l, c, e
 # from el_phys_l1_const import r1, r2, l, c, e
 
@@ -75,9 +76,10 @@ ax_u = plt.gca()  # Создание экземпляра осей для воз
 # ax.xaxis.set_major_locator(MultipleLocator(10))  # Основная цена деления оси Ox
 ax_u.xaxis.set_minor_locator(MultipleLocator(0.005))  # Дополнительная цена деления оси Ox (t)
 # ax.yaxis.set_major_locator(MultipleLocator(0.1))  # Основная цена деления оси Oy
-# ax.yaxis.set_minor_locator(MultipleLocator(0.02))  # Дополнительная цена деления оси Oy (t)
+ax_u.yaxis.set_minor_locator(MultipleLocator(0.1))  # Дополнительная цена деления оси Oy (t)
 ax_u.grid()
-plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin u.png', dpi=600)
+# plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin u.png', dpi=600)
+plt.show()
 '''
 
 r'''

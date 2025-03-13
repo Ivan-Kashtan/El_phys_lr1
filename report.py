@@ -143,48 +143,68 @@ f = [KeepTogether([mn, t_u, un, s_80, kaf, s_80, tp, title, var, s_130, fac, gr,
      sp_25,
      fml(f'$I_{{пер}} = \\sqrt {{({abs(u_c_f[1]):.2f} - {u0})^2 / {z_c:.0f}^2 + ({abs(i_l_f[1]):.4f} - {i0})^2}}$ = {abs(i_f[1]):.4f} А'),
      sp_25,
-     fml(f'$tan\\phi_{{п}} = -\\dfrac{{z(i_{{вын}}(0) - i0)}} {{u_{{вын}}(0) - u0}} = {abs(tg_phi_p[1]):.3f}$'),
+     fml(f'$tan\\phi_{{п}} = -z\\dfrac{{(i_{{вын}}(0) - i0)}} {{u_{{вын}}(0) - u0}}; \\quad '
+         f'tan\\phi_{{п}} = -{z_c} \\dfrac {{({cnst.i0} - {cnst.i0})}} {{{cnst.uc0} - {cnst.uc0}}} = \u221e$'),
      sp_30,
-     fml(f'$t^u_{{max}} = \\dfrac{{ {{\\pi}} - \\phi_{{п}} }} {{\\omega_0}} = {abs(t_m_u[1] * 10 ** 3):.2f}$ мс'),
+     fml(f'$t^u_{{max}} = \\dfrac{{ \\pi - \\phi_{{п}} }} {{\\omega_0}}; \\quad'
+         f't^u_{{max}} = \\dfrac{{ \\pi - {p_r(atg[1])[0]:.3f} \\pi}} {{{omega0:.1f}}} = {abs(t_m_u[1] * 10**3):.2f}$ мс'),
      sp_30,
-     fml(f'$t^i_{{max}} = \\dfrac{{ {{\\pi / 2}} - \\phi_{{п}} }} {{\\omega_0}} = {abs(t_m_i[1] * 10 ** 3):.1f}$ мс'),
+     fml(f'$t^i_{{max}} = \\dfrac{{ {{\\pi / 2}} - \\phi_{{п}} }} {{\\omega_0}}; \\quad'
+         f't^i_{{max}} = \\dfrac{{ {{\\pi / 2}} - {p_r(atg[1])[0]:.3f} \\pi}} {{{omega0:.1f}}} = {abs(t_m_i[1] * 10**3):.2f}$ мс'),
      sp_30,
-     fml(f'$K_{{уд}}^u = e^{{-\\delta * t^u_max}} + 1 = {abs(k_s_u[1]):.3f}$'),
+     fml(f'$K_{{уд}}^u = e^{{-\\delta * t^u_max}} + 1; \\quad'
+         f'K_{{уд}}^u = e^{{{-delta} * {t_m_u[1]:.2f}}} + 1 = {abs(k_s_u[1]):.3f}$'),
      sp_20,
-     fml(f'$K_{{уд}}^i = e^{{-\\delta * t^i_max}} + 1 = {abs(k_s_i[1]):.3f}$'),
+     fml(f'$K_{{уд}}^i = e^{{-\\delta * t^i_max}} + 1; \\quad'
+         f'K_{{уд}}^i = e^{{{-delta} * {t_m_i[1]:.2f}}} + 1 = {abs(k_s_i[1]):.3f}$'),
      sp_30,
 
      Paragraph('При переменной ЭДС', style=st_0_10),
      fml('$e(t) = sin \\left(\\omega t \\right)$'),
      sp_20,
-     fml(f'$U_{{пер}} = \\sqrt {{({abs(u_c_f[0]):.2f} - {u0})^2 + {z_c:.0f}^2 \\cdot ({abs(i_l_f[0]):.4f} - {i0})^2}} = {abs(u_p[0]):.2f}$ В'),
+     fml(f'$U_{{пер}} = \\sqrt {{({p_r(u_c_f[0])[0]:.2f} - {u0})^2 + {z_c:.0f}^2 \\cdot ({abs(i_l_f[0]):.4f} - {i0})^2}} = {abs(u_p[0]):.2f}$ В'),
      sp_25,
      fml(f'$I_{{пер}} = \\sqrt {{({u_c_f[0]:.2f} - {u0})^2 / {z_c:.0f}^2 + ({i_l_f[0]:.4f} - {i0})^2}}$ = {abs(i_f[0]):.4f} А'),
      sp_25,
      fml(f'$i_{{вын}} = \\dfrac {{e}} {{Z}}$'),
      sp_30,
      fml(f'$Z = \\dfrac{{x_c R_2}} {{x_c + R_2}} + \\dfrac {{x_L R1}} {{x_L + R_1}}; '
-         f'Z = {polar(z_f)[0]:.1f} \u2220 {polar(z_f)[1]:.1f}$ Ом'),
+         f'Z = {p_d(z_f)[0]:.1f} \u2220 {p_d(z_f)[1]:.1f}$ Ом'),
      sp_30,
      fml(f'$i_{{вын}} = \\dfrac {{{e_a[0]}}} {{{z_f:.1f}}} '
-         f'= {polar(i_f[0])[0] * 10 ** 3:.1f} \u2220 {polar(i_f[0])[1]:.1f}$ мА'),
+         f'= {p_d(i_f[0])[0] * 10**3:.1f} \u2220 {p_d(i_f[0])[1]:.1f}$ мА'),
      sp_30,
-     fml(f'$i_{{L_\u0020 вын}} = i_{{вын}}  \\dfrac {{R_1}} {{x_l + R_1}} = '
-         f'{polar(i_l_f[0]*10**3)[0]:.2f} \u2220 {polar(i_f[0])[1]:.1f}$ мА'),
+     fml(f'$i_{{L_\u0020 вын}} = i_{{вын}}  \\dfrac {{R_1}} {{x_l + R_1}}; \\quad '
+         f'i_{{L_\u0020 вын}} = {p_d(i_l_f[0]*10**3)[0]:.2f} \u2220 {p_d(i_f[0])[1]:.1f}$ мА'),
      sp_25,
-     fml(f'$i_{{1_\u0020 вын}} = i_{{вын}} - i_{{L_\u0020 вын}} = {i1_f[0]*10**3:.2f}$ мА'),
+     fml(f'$i_{{1_\u0020 вын}} = i_{{вын}} - i_{{L_\u0020 вын}}; \\quad '
+         f'i_{{1_\u0020 вын}} = {p_d(i_f[0])[0] * 10**3:.1f} \u2220 {p_d(i_f[0])[1]:.1f} - '
+         f'{p_d(i_l_f[0]*10**3)[0]:.2f} \u2220 {p_d(i_f[0])[1]:.1f} = '
+         f'{p_d(i1_f[0]*10**3)[0]:.2f} \u2220 {p_d(i1_f[0])[1]:.1f}$ мА'),
      sp_20,
-     fml(f'$U_{{C_\u0020 вын}} = E - i_{{1_\u0020 вын}} R_1 = {u_c_f[0]:.3f}$ В'),
+     fml(f'$U_{{C_\u0020 вын}} = E - i_{{1_\u0020 вын}} R_1; \\quad'
+         f'$U_{{C_\u0020 вын}} = {e_a[0]} - {p_d(i1_f[0]*10**3)[0]:.2f} \u2220 {p_d(i1_f[0])[1]:.1f} \\cdot {r1} '
+         f'= {p_d(u_c_f[0]*10**3)[0]:.2f} \u2220 {p_d(u_c_f[0])[1]:.1f}$ В'),
      sp_25,
-     fml(f'$tan\\phi_{{п}} = -\\dfrac{{z(i_{{вын}}(0) - i0)}} {{u_{{вын}}(0) - u0}} = {abs(tg_phi_p[0]):.3f}$'),
+     # fml(f'$tan\\phi_{{п}} = -z\\dfrac{{(i_{{вын }}(0) - i0) }} {{ u_{{вын}}(0) - u0 }}; \\quad'
+     #     f'tan\\phi_{{п}} = -{z_c}\\dfrac {{{p(i1_f[0]*10**3)[0]:.2f} \u2220 {p(i1_f[0])[1]:.1f} - {i0}) }} '
+     #     f'{{{p(u_c_f[0])[0]:.3f}}} \u2220 {p(u_c_f[0])[1]:.1f} - {u0}}} = {abs(tg_phi_p[0]):.3f }$'),
+     #     fml(f'$tan\\phi_{{п}} = -z\\dfrac{{i_{{вын }}(0) - i0 }} {{ u_{{вын}}(0) - u0 }} = '
+     #         f'{tg_phi_p[0]}$'),
+     fml(f'$tan\\phi_{{п}} = -z\\dfrac{{i_{{вын }}(0) - i0 }} {{ u_{{вын}}(0) - u0 }}; \\quad '
+         f'tan\\phi_{{п}} = -{z_c}\\dfrac{{{abs(round(i_f[0], 2))} - {i0} }} {{ {abs(round(u_c_f[0], 2))} - u0 }} = {tg_phi_p[0]}$'),
      sp_30,
-     fml(f'$t^u_{{max}} = \\dfrac{{ {{\\pi}} - \\phi_{{п}} }} {{\\omega_0}} = {abs(t_m_u[0] * 10**3):.2f}$ мс'),
+     fml(f'$t^u_{{max}} = \\dfrac{{ {{\\pi}} - \\phi_{{п}} }} {{\\omega_0}}; \\quad '
+         f't^u_{{max}} = \\dfrac{{ {{\\pi}} - {p_r(atg[0])[0]:.3f} }} {{ {omega0:.1f} }} = {abs(t_m_u[0]*10**3):.2f}$ мс'),
      sp_30,
-     fml(f'$t^i_{{max}} = \\dfrac{{ {{\\pi / 2}} - \\phi_{{п}} }} {{\\omega_0}} = {abs(t_m_i[0] * 10**3):.1f}$ мс'),
+     fml(f'$t^i_{{max}} = \\dfrac{{ {{\\pi / 2}} - \\phi_{{п}} }} {{\\omega_0}}; \\quad'
+         f'$t^i_{{max}} = \\dfrac {{ {{\\pi / 2}} - {p_r(atg[0])[0]:.3f}}} }} {{{omega0:.1f}}} = {abs(t_m_i[0]*10**3):.2f}$ мс'),
      sp_30,
-     fml(f'$K_{{уд}}^u = e^{{-\\delta t^u_{{max}}}} + 1 = {abs(k_s_u[0]):.3f}$'),
+     fml(f'$K_{{уд}}^u = e^{{-\\delta t^u_{{max}}}} + 1; \\quad'
+         f'K_{{уд}}^u = e^{{{-delta} {t_m_u[0]*10**3:.2f}}} + {1} = {abs(k_s_u[0]):.3f}$'),
      sp_20,
-     fml(f'$K_{{уд}}^i = e^{{-\\delta t^i_{{max}}}} + 1 = {abs(k_s_i[0]):.3f}$'),
+     fml(f'$K_{{уд}}^i = e^{{-\\delta t^i_{{max}}}} + 1; \\quad'
+         f'K_{{уд}}^i = e^{{{-delta} {t_m_i[0]*10**3:.2f}}} + {1} = {abs(k_s_i[0]):.3f}$'),
      Paragraph('Вывод: в результате работы выполнено моделирование переходного процесса '
                'в заданной схеме электрической цепи. Результат моделирования проверен ручным счетом.', style=st_10_3),
      ]
