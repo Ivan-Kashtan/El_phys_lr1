@@ -2,11 +2,12 @@
 from io import BytesIO
 
 import numpy as np
-# import matplotlib.pyplot as plt
-# from numpy._core._multiarray_umath import sin
+import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+from matplotlib.pyplot import MultipleLocator
+# from numpy._core._multiarray_umath import sin
 # from svglib.svglib import svg2rlg
-# from matplotlib.pyplot import MultipleLocator
+
 from in_dat import r1, r2, l, c, e
 
 # Параметры схемы
@@ -55,28 +56,29 @@ plt.xlabel('$t$, с')
 plt.ylabel('$u_C$, В')
 ax_u = plt.gca()  # Создание экземпляра осей для возможности его редактирования
 # ax.xaxis.set_major_locator(MultipleLocator(10))  # Основная цена деления оси Ox
-# ax_u.xaxis.set_minor_locator(MultipleLocator(0.002))  # Дополнительная цена деления оси Ox (t)
+ax_u.xaxis.set_minor_locator(MultipleLocator(0.005))  # Дополнительная цена деления оси Ox (t)
 # ax_u.yaxis.set_major_locator(MultipleLocator(0.05))  # Основная цена деления оси Oy
-# ax.yaxis.set_minor_locator(MultipleLocator(1E-4))  # Дополнительная цена деления оси Oy (t)
+ax_u.yaxis.set_minor_locator(MultipleLocator(0.05))  # Дополнительная цена деления оси Oy (t)
 ax_u.grid()
+# plt.show()
 plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\const u.png', dpi=600)
 '''
 
 r'''
 f2 = plt.figure(2)
-plt.plot(t, i, 'k')
-plt.grid()
+plt.plot(t, i * 10**3, 'k')
 plt.xlabel('$t$, с')
-plt.ylabel('$i_L$, А')
+plt.ylabel('$i_L$, мА')
 plt.title('Ток в индуктивности при $E = 1 В$')
-# ax = plt.gca()  # Создание экземпляра осей для возможности его редактирования
+ax_i = plt.gca()  # Создание экземпляра осей для возможности его редактирования
 # ax.xaxis.set_major_locator(MultipleLocator(10))  # Основная цена деления оси Ox
-# ax.xaxis.set_minor_locator(MultipleLocator(0.005))  # Дополнительная цена деления оси Ox (t)
-# ax.yaxis.set_major_locator(MultipleLocator(100))  # Основная цена деления оси Oy
-ax_u.yaxis.set_minor_locator(MultipleLocator(0.02))  # Дополнительная цена деления оси Oy (t)
-ax_u.grid()
-plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\const i.png', dpi=600)
+ax_i.xaxis.set_minor_locator(MultipleLocator(0.005))  # Дополнительная цена деления оси Ox (t)
+# ax_i.yaxis.set_major_locator(MultipleLocator(0.05))  # Основная цена деления оси Oy
+ax_i.yaxis.set_minor_locator(MultipleLocator(0.05))  # Дополнительная цена деления оси Oy (t)
+ax_i.grid()
+# plt.grid()
 # plt.show()
+plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\const i.png', dpi=600)
 '''
 
 '''

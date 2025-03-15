@@ -7,7 +7,7 @@ from eq import fml
 from page_number import addPageNumber
 
 doc = SimpleDocTemplate(
-    'report.pdf',
+    'test 2.pdf',
     pagesize=A4,
     rightMargin=1 * cm, leftMargin=3 * cm,
     topMargin=1 * cm, bottomMargin=1.5 * cm, title='test_2')

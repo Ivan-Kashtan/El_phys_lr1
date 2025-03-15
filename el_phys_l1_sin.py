@@ -78,9 +78,9 @@ ax_u.xaxis.set_minor_locator(MultipleLocator(0.005))  # Дополнительн
 # ax.yaxis.set_major_locator(MultipleLocator(0.1))  # Основная цена деления оси Oy
 ax_u.yaxis.set_minor_locator(MultipleLocator(0.1))  # Дополнительная цена деления оси Oy (t)
 ax_u.grid()
-# plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin u.png', dpi=600)
-plt.show()
-'''
+plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin u.png', dpi=600)
+# plt.show()
+# '''
 
 r'''
 f_i1 = plt.figure(2)
@@ -93,7 +93,7 @@ ax_i = plt.gca()  # Создание экземпляра осей для воз
 # ax.xaxis.set_major_locator(MultipleLocator(10))  # Основная цена деления оси Ox
 ax_i.xaxis.set_minor_locator(MultipleLocator(0.005))  # Дополнительная цена деления оси Ox (t)
 # ax_i.yaxis.set_major_locator(MultipleLocator(100))  # Основная цена деления оси Oy
-# ax_i.yaxis.set_minor_locator(MultipleLocator(1E-4))  # Дополнительная цена деления оси Oy (t)
+ax_i.yaxis.set_minor_locator(MultipleLocator(0.05))  # Дополнительная цена деления оси Oy (t)
 ax_i.grid()
 plt.savefig(r'C:\Users\kasht\Documents\Учёба\6 семестр\Электрофизика\ЛР1\sin i.png', dpi=600)
 '''
